@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const activityController = require('./activity.controller')
-
-router.get('/project/:projectId', activityController.findProjectResponse)
+router.get('/project', activityController.findProjectResponse)
+router.get('/project/:projectName', activityController.findSpecificProjectResponse)
 router.post('/project', activityController.createProjectResponse) 
-router.post('/project/:projectId/tasks', activityController.createTaskResponse) 
+router.post('/project/:projectName/tasks', activityController.createTaskResponse) 
 router.put('/project/:projectId', activityController.createUpdateResponse)
+router.put('/project/:projectId', activityController.archiveProjectResponse)
 
 module.exports = router

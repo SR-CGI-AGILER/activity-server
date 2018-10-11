@@ -1,6 +1,11 @@
 const express = require('express')
 const app = express()
-const activity = require('./api/activity/index')
+const activity = require('./api/activity/index');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser({ urlEncoded: {extended : true }}));
+app.use(bodyParser.json())
+
 
 app.use('/api/v1', activity)
 

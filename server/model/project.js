@@ -10,7 +10,8 @@ var projectSchema = new Schema({
     createdAt : Date,
     status : String,
     dueDate : Date,
-    task : [{taskId : String, text : String, createdAt : Date, dueDate : Date, status : String, assignTo : String}]
+    task : [{taskId : String, text : String, createdAt : Date, dueDate : Date, status : String, assignTo : String, archiveTask: Boolean}],
+    archiveProject : Boolean
 });
 
 var project = mongoose.model('project', projectSchema);
