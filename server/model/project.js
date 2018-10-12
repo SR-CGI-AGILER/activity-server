@@ -14,6 +14,13 @@ var projectSchema = new Schema({
     archiveProject : Boolean
 });
 
+// var test = new Schema({
+//     id: String,
+//     projectName: String,
+//     createdAt: Date
+// });
+
 var project = mongoose.model('project', projectSchema);
+// var test = mongoose.model('test',test);
 
 module.exports = project;

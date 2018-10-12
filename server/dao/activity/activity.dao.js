@@ -59,7 +59,7 @@ function createTask(name) {
         // console.log(name.projectName, "this is the dao")
         // console.log(project)
         project.findOne({
-            "projectName": name.projectName
+            "_id": name._id
         }, function (err, data) {
 
 
@@ -68,7 +68,7 @@ function createTask(name) {
             //       text: "sdfsdfsdf",
             //       taskId: "adsasdas"
             //   }))
-            console.log(name.task)
+            console.log(name)
             data.task.push({
                 taskId: name.task.taskId,
                 text: name.task.text
@@ -89,11 +89,7 @@ function updateProject(id) {
             "projectName": id.projectName
         }, {
             $set: {
-<<<<<<< HEAD
                 "projectId": id.projectId 
-=======
-                "projectId": id.projectId
->>>>>>> 26bc8d732b25dc2a2d1fab3605575634fa26f7c9
             }
         }, function (err, data) {
             console.log(data)
@@ -103,20 +99,20 @@ function updateProject(id) {
     })
 }
 
-function archiveProject(name) {
-    return new Promise(function (resolve, reject) {
-        project.findOneAndUpdate({
-            projectName: name.projectName
-        }, {
-            $set: {
-                "archiveProject": true
-            }
-        }, function (err, data) {
-            console.log(data)
-            resolve(data)
-        })
-    })
-}
+// function archiveProject(name) {
+//     return new Promise(function (resolve, reject) {
+//         project.findOneAndUpdate({
+//             projectName: name.projectName
+//         }, {
+//             $set: {
+//                 "archiveProject": true
+//             }
+//         }, function (err, data) {
+//             console.log(data)
+//             resolve(data)
+//         })
+//     })
+// }
 
 
 
@@ -126,5 +122,5 @@ module.exports = {
     createProject,
     createTask,
     updateProject,
-    archiveProject
+    // archiveProject
 }
