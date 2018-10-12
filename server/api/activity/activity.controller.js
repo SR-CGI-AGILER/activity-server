@@ -56,9 +56,10 @@ function createUpdateResponse(req, res) {
 }
 
 function archiveProjectResponse(req, res) {
-    activityDao.archiveProject({
-        projectId: req.params.projectId
-    }).then(data => {
+    let data = {
+        projectName: req.params.projectName
+    }
+    activityDao.archiveProject(data).then(data => {
         res.status('200').send({
             data: data
         })
