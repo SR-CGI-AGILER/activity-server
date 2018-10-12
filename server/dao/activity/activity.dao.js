@@ -99,7 +99,7 @@ function updateProject(id) {
     })
 }
 
-function archiveProject(id) {
+function archiveProject(name) {
     return new Promise(function (resolve, reject) {
         project.findOneAndUpdate({
             projectName: name.projectName
