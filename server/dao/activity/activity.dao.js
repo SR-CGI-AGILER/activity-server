@@ -89,7 +89,11 @@ function updateProject(id) {
             "projectName": id.projectName
         }, {
             $set: {
+<<<<<<< HEAD
                 "projectId": id.projectId 
+=======
+                "projectId": id.projectId
+>>>>>>> 26bc8d732b25dc2a2d1fab3605575634fa26f7c9
             }
         }, function (err, data) {
             console.log(data)
