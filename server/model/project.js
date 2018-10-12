@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var projectSchema = new Schema({
     projectId : String,
     projectName : String,
-    assignTo : [String],
+    assignTo : String,
     createdAt : Date,
     status : String,
     dueDate : Date,
