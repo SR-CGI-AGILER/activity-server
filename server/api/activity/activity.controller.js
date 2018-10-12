@@ -20,8 +20,10 @@ function findSpecificProjectResponse(req, res) {
 }
 
 function createProjectResponse(req, res) {
-    console.log(req.body)
-    activityDao.createProject(req.body).then(data => {
+    let newProjectDetails = {
+        projectName: req.body.projectName
+    }
+    activityDao.createProject(newProjectDetails).then(data => {
       
         res.status('201').send({
             data: req.body

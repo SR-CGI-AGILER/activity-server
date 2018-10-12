@@ -5,6 +5,6 @@ router.get('/project/:projectName', activityController.findSpecificProjectRespon
 router.post('/project', activityController.createProjectResponse) 
 router.post('/project/:projectName/tasks', activityController.createTaskResponse) 
 router.put('/project/:projectName', activityController.updateProjectResponse)
-router.put('/project/:projectName', activityController.archiveProjectResponse)
+// router.put('/project/:projectName', activityController.archiveProjectResponse)
 
 module.exports = router

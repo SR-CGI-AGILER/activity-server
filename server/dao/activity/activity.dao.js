@@ -3,6 +3,7 @@ const project = require('../../model/project');
 
 function findSpecificProject(name) {
     return new Promise(function (resolve, reject) {
+        console.log(name)
         project.find({
             "projectName": name.projectName
         }, function (err, data) {
@@ -39,6 +40,7 @@ function findProject() {
 
 function createProject(details) {
     return new Promise(function (resolve, reject) {
+        console.log(details, "sdfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsf")
         const x = new project({
             "projectId": details.projectId,
             "projectName": details.projectName,
@@ -89,11 +91,7 @@ function updateProject(id) {
             "projectName": id.projectName
         }, {
             $set: {
-<<<<<<< HEAD
                 "projectId": id.projectId 
-=======
-                "projectId": id.projectId
->>>>>>> 26bc8d732b25dc2a2d1fab3605575634fa26f7c9
             }
         }, function (err, data) {
             console.log(data)
