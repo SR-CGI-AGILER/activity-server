@@ -86,10 +86,10 @@ function updateProject(id) {
     return new Promise(function (resolve, reject) {
 
         project.findOneAndUpdate({
-            "projectId": "1223421"
+            "projectName": id.projectName
         }, {
             $set: {
-                projectName: 'l123'
+                "projectId": id.projectId 
             }
         }, function (err, data) {
             console.log(data)
@@ -105,7 +105,7 @@ function archiveProject(name) {
             projectName: name.projectName
         }, {
             $set: {
-                archiveProject: true
+                "archiveProject": true
             }
         }, function (err, data) {
             console.log(data)

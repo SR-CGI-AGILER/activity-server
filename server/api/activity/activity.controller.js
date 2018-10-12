@@ -44,9 +44,9 @@ function createTaskResponse(req, res) {
     })
 }
 
-function createUpdateResponse(req, res) {
+function updateProjectResponse(req, res) {
     activityDao.updateProject({
-        projectId: req.params.projectId
+        projectName: req.params.projectName
     }).then(data =>{
         res.status('200').send({
             data: data
@@ -71,6 +71,6 @@ module.exports = {
     findProjectResponse,
     createProjectResponse,
     createTaskResponse,
-    createUpdateResponse,
+    updateProjectResponse,
     archiveProjectResponse
 }
