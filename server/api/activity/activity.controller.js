@@ -33,13 +33,14 @@ function createProjectResponse(req, res) {
 }
 
 function createTaskResponse(req, res) {
+    console.log("here")
    let data = {
-       projectName: req.params.projectName,
-       task: req.body.task
+       id: req.params.projectId,
+       task: req.body
    }
     activityDao.createTask(data).then(data => {
-        console.log(req.params.projectName)
-        res.status('201').send({
+        // console.log(req.params._id)
+        res.status('200').send({
             data: req.body
     })
     
@@ -57,22 +58,22 @@ function updateProjectResponse(req, res) {
     })
 }
 
-function archiveProjectResponse(req, res) {
-    let data = {
-        projectName: req.params.projectName
-    }
-    activityDao.archiveProject(data).then(data => {
-        res.status('200').send({
-            data: data
-        })
-    })
-}
+// function archiveProjectResponse(req, res) {
+//     let data = {
+//         projectName: req.params.projectName
+//     }
+//     activityDao.archiveProject(data).then(data => {
+//         res.status('200').send({
+//             data: data
+//         })
+//     })
+// }
 
 module.exports = {
     findSpecificProjectResponse,
     findProjectResponse,
     createProjectResponse,
     createTaskResponse,
-    updateProjectResponse,
-    archiveProjectResponse
+    updateProjectResponse
+    // archiveProjectResponse
 }

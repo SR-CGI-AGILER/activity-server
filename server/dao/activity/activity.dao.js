@@ -3,11 +3,11 @@ const project = require('../../model/project');
 
 function findSpecificProject(name) {
     return new Promise(function (resolve, reject) {
-        console.log(name)
+        // console.log(name)
         project.find({
             "projectName": name.projectName
         }, function (err, data) {
-            console.log(err, data)
+            // console.log(err, data)
             resolve(data)
         })
     })
@@ -18,7 +18,7 @@ function findProject() {
         project.find({
            
         }, function (err, data) {
-            console.log(err, data)
+            // console.log(err, data)
             resolve(data)
         })
     })
@@ -40,7 +40,7 @@ function findProject() {
 
 function createProject(details) {
     return new Promise(function (resolve, reject) {
-        console.log(details, "sdfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsf")
+        // console.log(details, "sdfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdfsf")
         const x = new project({
             "projectId": details.projectId,
             "projectName": details.projectName,
@@ -58,24 +58,14 @@ function createProject(details) {
 
 function createTask(name) {
     return new Promise(function (resolve, reject) {
-        // console.log(name.projectName, "this is the dao")
-        // console.log(project)
-        project.findOne({
-            "projectName": name.projectName
-        }, function (err, data) {
-
-
-            // data.task
-            //   console.log(err, data[0]["task"].push({
-            //       text: "sdfsdfsdf",
-            //       taskId: "adsasdas"
-            //   }))
-            console.log(name.task)
-            data.task.push({
-                taskId: name.task.taskId,
-                text: name.task.text
-            })
-            console.log(data.task)
+        console.log("here in DAO", JSON.stringify(name, 1,1))
+        // project.findOneAndUpdate({'_id': name.id}, name.project ,function(err,data) {
+        //     // data.task.push(name.task)
+        //     if (err) console.log(err)
+        //     resolve({"msg": `update successfully ${data}`})
+        // })
+        project.findById({"_id": name.id}, function(err, data) {
+            data.task.push(name.task);
             data.save()
             resolve(data)
         })
@@ -94,27 +84,27 @@ function updateProject(id) {
                 "projectId": id.projectId 
             }
         }, function (err, data) {
-            console.log(data)
+            // console.log(data)
             resolve(data)
         })
 
     })
 }
 
-function archiveProject(name) {
-    return new Promise(function (resolve, reject) {
-        project.findOneAndUpdate({
-            projectName: name.projectName
-        }, {
-            $set: {
-                "archiveProject": true
-            }
-        }, function (err, data) {
-            console.log(data)
-            resolve(data)
-        })
-    })
-}
+// function archiveProject(name) {
+//     return new Promise(function (resolve, reject) {
+//         project.findOneAndUpdate({
+//             projectName: name.projectName
+//         }, {
+//             $set: {
+//                 "archiveProject": true
+//             }
+//         }, function (err, data) {
+//             console.log(data)
+//             resolve(data)
+//         })
+//     })
+// }
 
 
 
@@ -124,5 +114,5 @@ module.exports = {
     createProject,
     createTask,
     updateProject,
-    archiveProject
+    // archiveProject
 }
