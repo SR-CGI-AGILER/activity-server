@@ -27,5 +27,5 @@ app.use('/api/v1', activity)
 app.use(function (req, res, next) {
     next();
 });
-
-app.listen(process.env.PORT || 8000, () => console.log('I am running on ', process.env.PORT))
+const port = process.env.PORT || 8000
+app.listen(port, () => console.log('I am running on ', port))
